@@ -10,7 +10,9 @@ public class TeritoriniaiVienetai {
     private WebDriver driver;
 
     private By textOfHeader = By.xpath("//div[@class='list-group-item active']/span");
-    private  By apygarduKandidataiBtn = By.id("apygarduKandidatai");
+    private By apygarduKandidataiBtn = By.id("apygarduKandidatai");
+    private By apygardosPavadinismas = By.id("inputDistrictName");
+    private By sukurtiBtn = By.xpath("//button[text()='Sukurti']");
 
     public TeritoriniaiVienetai(WebDriver driver) {
         this.driver = driver;
@@ -29,5 +31,10 @@ public class TeritoriniaiVienetai {
      public void clickApygarduKandidataiBtn() {
          driver.findElement(apygarduKandidataiBtn).click();
      }
+
+    public void addApygarda(String pavadinimas) {
+        driver.findElement(apygardosPavadinismas).sendKeys(pavadinimas);
+        driver.findElement(sukurtiBtn).click();
+    }
 
 }

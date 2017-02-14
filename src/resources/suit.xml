@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Suite" thread-count="2" parallel="tests">
+    <parameter name="link" value="http://localhost:9090" />
+    <test name="ChromeTest">
+        <parameter name="browser" value="Firefox" />
+        <classes>
+            <class name="it.akademija.test.VotingSystemWebTest" />
+            <class name="it.akademija.test.AdministratorBtnTest" />
+
+        </classes>
+    </test>
+</suite>
