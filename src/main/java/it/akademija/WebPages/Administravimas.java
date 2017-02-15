@@ -16,6 +16,7 @@ public class Administravimas {
     private By politiniaiVienetai = By.id("location4");
     private By polVienHeaderText = By.xpath("//span[text()='Partijų sąrašas']");
     private By apylinkiuRezultatai = By.id("location5");
+    private By apyRezHeaderText = By.xpath("//span[text()='Apylinkių rezultatai']");
 
     public Administravimas(WebDriver driver) {
         this.driver = driver;
@@ -39,6 +40,11 @@ public class Administravimas {
     public boolean checkPolitiniaiVienetai() {
         driver.findElement(politiniaiVienetai).click();
         return driver.findElement(polVienHeaderText).isDisplayed();
+    }
+
+    public boolean checkApylinkiuRezultatai() {
+        driver.findElement(apylinkiuRezultatai).click();
+        return driver.findElement(apyRezHeaderText).isDisplayed();
     }
 }
 

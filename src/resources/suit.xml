@@ -7,6 +7,8 @@
         <classes>
             <class name="it.akademija.test.VotingSystemWebTest" />
             <class name="it.akademija.test.AdministratorBtnTest" />
+            <class name="it.akademija.test.TeritoriniaiVienetaiTest" />
+
 
         </classes>
     </test>

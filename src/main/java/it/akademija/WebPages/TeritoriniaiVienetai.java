@@ -8,33 +8,19 @@ import org.openqa.selenium.WebDriver;
  */
 public class TeritoriniaiVienetai {
     private WebDriver driver;
-
-    private By textOfHeader = By.xpath("//div[@class='list-group-item active']/span");
-    private By apygarduKandidataiBtn = By.id("apygarduKandidatai");
-    private By apygardosPavadinismas = By.id("inputDistrictName");
+    private By teritoriniaiVienetaiBtn = By.id("location1");
+    private By apygardosName = By.id("inputDistrictName");
     private By sukurtiBtn = By.xpath("//button[text()='Sukurti']");
+    private By apygarda = By.xpath("//div[contains(text(), 'Alytaus')]");
 
     public TeritoriniaiVienetai(WebDriver driver) {
         this.driver = driver;
     }
 
-
-    public String getTextOfHeader() {
-        String HeaderText;
-        try {
-            HeaderText = driver.findElement(textOfHeader).getText();
-        } catch (Exception e) {
-            HeaderText = "";
-             }
-        return HeaderText;
-    }
-     public void clickApygarduKandidataiBtn() {
-         driver.findElement(apygarduKandidataiBtn).click();
-     }
-
-    public void addApygarda(String pavadinimas) {
-        driver.findElement(apygardosPavadinismas).sendKeys(pavadinimas);
+    public String addApygarda() {
+        driver.findElement(teritoriniaiVienetaiBtn).click();
+        driver.findElement(apygardosName).sendKeys("Alytaus");
         driver.findElement(sukurtiBtn).click();
+        return driver.findElement(apygarda).getText();
     }
-
 }

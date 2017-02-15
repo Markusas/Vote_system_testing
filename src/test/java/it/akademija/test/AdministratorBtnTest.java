@@ -19,6 +19,8 @@ public class AdministratorBtnTest extends VotingSystem {
         Assert.assertTrue(administravimas.checkApygarduKandidatai());
         Assert.assertTrue(administravimas.checkApylinkiuAtstovai());
         Assert.assertTrue(administravimas.checkPolitiniaiVienetai());
+        Assert.assertTrue(administravimas.checkApylinkiuRezultatai());
+
 
     }
 }
