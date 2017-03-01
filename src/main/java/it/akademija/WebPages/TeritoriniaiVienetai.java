@@ -7,6 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by Marek on 2/8/2017.
@@ -29,11 +30,14 @@ public class TeritoriniaiVienetai {
     @FindBy(id = "unit-header")
     List<WebElement> districtList;
 
-    @FindBy(xpath = "//p[contains(text(), 'šalinti apygardą')]")
+    @FindBy(xpath = "//span[contains(text(), 'Šalinti apygardą')]")
     private WebElement deleteApygardaBtn;
 
     @FindBy(xpath = "//button[contains(text(), 'Patvirtinti')]")
     private WebElement patvirtintiBtn;
+
+    @FindBy(xpath = "//button[contains(text(), 'Atšaukti')]")
+    private WebElement atsauktiBtn;
 
     private String apygardosNameForTest;
 
@@ -77,10 +81,29 @@ public class TeritoriniaiVienetai {
             checkOrApygardaDelete = false;
         } else {
             checkOrApygardaDelete = true;
-            System.out.println("Apygarda istrinta!");
-        }
 
+        }
+        System.out.println("Apygarda " + apygardosNameForTest + " istrinta!");
         return checkOrApygardaDelete;
 
+    }
+
+    public boolean notDeleteApygarda() {
+        boolean checkOrApygardaNotDelete;
+        apygardosNameForTest = districtList.get(districtList.size() - 1).getText();
+        districtList.get(districtList.size() - 1).click();
+        deleteApygardaBtn.click();
+        atsauktiBtn.click();
+        String apygardosNameNotDelete = districtList.get(districtList.size() - 1).getText();
+        System.out.println("pirmas: " + apygardosNameForTest + " antras: " + apygardosNameNotDelete);
+        if (apygardosNameForTest.equals(apygardosNameNotDelete)){
+            checkOrApygardaNotDelete = true;
+            System.out.println("Apygarda " + apygardosNameForTest + " neistrinta!");
+        } else {
+            checkOrApygardaNotDelete = false;
+
+        }
+
+        return checkOrApygardaNotDelete;
     }
 }

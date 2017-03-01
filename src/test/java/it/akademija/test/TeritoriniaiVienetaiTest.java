@@ -17,12 +17,12 @@ public class TeritoriniaiVienetaiTest extends VotingSystem{
         homePage.clickAdministravimasBtn();
         Assert.assertTrue(teritoriniaiVienetai.addApygarda().contains("Alytaus"));
         try {
-            Assert.assertTrue(teritoriniaiVienetai.addIncorrectApygarda(), "Apygarda su netaisingu pavadinimu neturejo buti prideta prie apygardu saraso!");
+            Assert.assertTrue(teritoriniaiVienetai.addIncorrectApygarda());
         } catch (AssertionError error) {
             System.out.println("Apygarda su netaisingu pavadinimu neturejo buti prideta prie apygardu saraso!");
         }
         Assert.assertTrue(teritoriniaiVienetai.deleteApygarda());
-
+        Assert.assertTrue(teritoriniaiVienetai.notDeleteApygarda());
 
     }
 }
