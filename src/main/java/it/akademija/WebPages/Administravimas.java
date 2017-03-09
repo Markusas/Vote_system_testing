@@ -20,6 +20,8 @@ public class Administravimas {
     private WebElement apygarduKandidatai;
     @FindBy(id = "location3")
     private WebElement apylinkiuAtstovai;
+    @FindBy(xpath = "//button[text()='Rodyti visus atstovus']")
+    private WebElement showAtstovus;
     @FindBy(xpath = "//b[text()='RINKIMŲ APYLINKIŲ ATSTOVAI']")
     private WebElement apyAtsHeaderText;
     @FindBy(id = "location4")
@@ -48,6 +50,7 @@ public class Administravimas {
 
     public boolean checkApylinkiuAtstovai() {
         apylinkiuAtstovai.click();
+        showAtstovus.click();
         return apyAtsHeaderText.isDisplayed();
     }
 

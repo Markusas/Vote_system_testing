@@ -15,10 +15,10 @@ import java.util.concurrent.TimeUnit;
 public class TeritoriniaiVienetai {
     private WebDriver driver;
 
-    @FindBy(id="location1")
+    @FindBy(id = "location1")
     private WebElement teritoriniaiVienetaiBtn;
 
-    @FindBy(id = "inputDistrictName")
+    @FindBy(id = "input-district-name")
     private WebElement apygardosName;
 
     @FindBy(xpath = "//button[text()='Sukurti']")
@@ -27,7 +27,7 @@ public class TeritoriniaiVienetai {
     @FindBy(xpath = "//div[contains(text(), 'Alytaus')]")
     private WebElement apygarda;
 
-    @FindBy(id = "unit-header")
+    @FindBy(xpath = "//div[contains(@id, 'district-')]")
     List<WebElement> districtList;
 
     @FindBy(xpath = "//span[contains(text(), 'Šalinti apygardą')]")
@@ -61,9 +61,9 @@ public class TeritoriniaiVienetai {
         sukurtiBtn.click();
         apygardosName.clear();
         int incorrectDistrictNumber = districtList.size();
-        if (correctDistrictNumber == incorrectDistrictNumber){
+        if (correctDistrictNumber == incorrectDistrictNumber) {
             checkSize = true;
-        }else {
+        } else {
             checkSize = false;
         }
         return checkSize;
@@ -71,13 +71,14 @@ public class TeritoriniaiVienetai {
 
     public boolean deleteApygarda() {
         boolean checkOrApygardaDelete;
+        System.out.println(districtList.size());
         apygardosNameForTest = districtList.get(districtList.size() - 1).getText();
         System.out.println(districtList.size());
         districtList.get(districtList.size() - 1).click();
         deleteApygardaBtn.click();
         patvirtintiBtn.click();
         System.out.println(districtList.size());
-        if (apygardosNameForTest == districtList.get(districtList.size() - 1).getText()){
+        if (apygardosNameForTest == districtList.get(districtList.size() - 1).getText()) {
             checkOrApygardaDelete = false;
         } else {
             checkOrApygardaDelete = true;
@@ -95,8 +96,7 @@ public class TeritoriniaiVienetai {
         deleteApygardaBtn.click();
         atsauktiBtn.click();
         String apygardosNameNotDelete = districtList.get(districtList.size() - 1).getText();
-        System.out.println("pirmas: " + apygardosNameForTest + " antras: " + apygardosNameNotDelete);
-        if (apygardosNameForTest.equals(apygardosNameNotDelete)){
+        if (apygardosNameForTest.equals(apygardosNameNotDelete)) {
             checkOrApygardaNotDelete = true;
             System.out.println("Apygarda " + apygardosNameForTest + " neistrinta!");
         } else {
